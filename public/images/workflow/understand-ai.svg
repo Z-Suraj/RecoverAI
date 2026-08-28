@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="aiBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.98" />
+    </linearGradient>
+    <filter id="glowBlur2" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#aiBg)" />
+  <circle cx="200" cy="140" r="160" fill="#8b5cf6" opacity="0.18" filter="url(#glowBlur2)" />
+  <circle cx="650" cy="360" r="150" fill="#3b82f6" opacity="0.15" filter="url(#glowBlur2)" />
+
+  <g transform="translate(60, 40)">
+    <!-- Main Frame -->
+    <rect width="680" height="420" rx="16" fill="url(#cardGrad2)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Top Window Bar -->
+    <path d="M 0 16 Q 0 0 16 0 L 664 0 Q 680 0 680 16 L 680 44 L 0 44 Z" fill="#090d16" />
+    <circle cx="24" cy="22" r="5" fill="#ef4444" opacity="0.8" />
+    <circle cx="40" cy="22" r="5" fill="#f59e0b" opacity="0.8" />
+    <circle cx="56" cy="22" r="5" fill="#10b981" opacity="0.8" />
+    <text x="80" y="26" fill="#a78bfa" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">AI DIAGNOSTIC &amp; CLV SCORING MATRIX</text>
+    
+    <rect x="530" y="12" width="134" height="20" rx="10" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-width="1" />
+    <text x="597" y="26" fill="#c4b5fd" font-family="monospace" font-size="10" font-weight="700" text-anchor="middle">CONFIDENCE: 94.6%</text>
+
+    <!-- Center Diagnostic Visual -->
+    <g transform="translate(24, 64)">
+      <!-- Left Column: Customer Profile & Risk -->
+      <rect width="300" height="230" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <text x="18" y="32" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">CUSTOMER HEALTH PROFILE</text>
+      
+      <circle cx="44" cy="74" r="22" fill="#4f46e5" />
+      <text x="44" y="80" fill="#ffffff" font-family="monospace" font-size="12" font-weight="800" text-anchor="middle">PS</text>
+      
+      <text x="80" y="68" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="14" font-weight="700">Priya Sharma</text>
+      <text x="80" y="86" fill="#64748b" font-family="-apple-system, sans-serif" font-size="11">Tier: Enterprise Platinum</text>
+
+      <rect x="18" y="112" width="264" height="42" rx="8" fill="#1e293b" />
+      <text x="30" y="132" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Historical Lifetime GMV</text>
+      <text x="30" y="148" fill="#10b981" font-family="monospace" font-size="13" font-weight="800">₹3,42,800 (42 orders)</text>
+
+      <rect x="18" y="164" width="264" height="50" rx="8" fill="#1e293b" />
+      <text x="30" y="184" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Churn Risk Prediction</text>
+      <text x="30" y="202" fill="#fb7185" font-family="monospace" font-size="12" font-weight="700">High Risk if dropped</text>
+
+      <!-- Right Column: AI Root Cause Diagnosis -->
+      <g transform="translate(320, 0)">
+        <rect width="312" height="230" rx="12" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.2" />
+        <text x="18" y="32" fill="#c4b5fd" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">ROOT CAUSE CLASSIFIER</text>
+
+        <!-- Cause Item 1 -->
+        <rect x="18" y="50" width="276" height="52" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="30" y="72" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="12" font-weight="700">Issuer Bank Outage (HDFC Bank)</text>
+        <text x="30" y="90" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Temporary 504 gateway timeout</text>
+
+        <!-- Cause Item 2 -->
+        <rect x="18" y="110" width="276" height="52" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="30" y="132" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="12" font-weight="700">Customer Intent Confidence</text>
+        <text x="30" y="150" fill="#10b981" font-family="-apple-system, sans-serif" font-size="10">98.2% High Intent to buy</text>
+
+        <!-- Cause Item 3: Recommended Action -->
+        <rect x="18" y="170" width="276" height="48" rx="8" fill="#4c1d95" stroke="#a78bfa" stroke-width="1" />
+        <text x="30" y="190" fill="#e9d5ff" font-family="-apple-system, sans-serif" font-size="10" font-weight="700">OPTIMAL RECOVERY PLAYBOOK</text>
+        <text x="30" y="206" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="800">Dynamic Switch to Razorpay UPI Intent</text>
+      </g>
+    </g>
+
+    <!-- Bottom Probability Gauge Banner -->
+    <g transform="translate(24, 310)">
+      <rect width="632" height="42" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+      <text x="24" y="26" fill="#c7d2fe" font-family="-apple-system, sans-serif" font-size="12" font-weight="700">RECOVERY SUCCESS LIKELIHOOD:</text>
+      <text x="270" y="26" fill="#10b981" font-family="monospace" font-size="14" font-weight="900">89.4% PROBABILITY</text>
+      <text x="490" y="26" fill="#93c5fd" font-family="-apple-system, sans-serif" font-size="11">Time Window: 180s</text>
+    </g>
+  </g>
+</svg>

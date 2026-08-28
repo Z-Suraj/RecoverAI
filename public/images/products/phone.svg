@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="phoneItemBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="20" fill="url(#phoneItemBg)" />
+  <circle cx="100" cy="100" r="85" fill="#818cf8" opacity="0.1" />
+  <!-- Phone Body -->
+  <rect x="62" y="28" width="76" height="144" rx="18" fill="#1e293b" stroke="#64748b" stroke-width="2.5" />
+  <!-- Screen Glass -->
+  <rect x="68" y="34" width="64" height="132" rx="14" fill="#030712" />
+  <!-- Dynamic Island -->
+  <rect x="88" y="40" width="24" height="6" rx="3" fill="#1e293b" />
+  <!-- Wallpaper Gradient -->
+  <circle cx="100" cy="100" r="22" fill="#6366f1" opacity="0.4" />
+  <circle cx="112" cy="115" r="16" fill="#10b981" opacity="0.4" />
+  <!-- Home Bar -->
+  <rect x="86" y="158" width="28" height="2.5" rx="1.2" fill="#94a3b8" />
+</svg>

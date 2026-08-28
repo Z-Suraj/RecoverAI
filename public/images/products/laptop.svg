@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="laptopBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="20" fill="url(#laptopBg)" />
+  <circle cx="100" cy="100" r="85" fill="#6366f1" opacity="0.1" />
+  <!-- Laptop Screen Lid -->
+  <rect x="42" y="44" width="116" height="78" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="2.5" />
+  <!-- Display Surface with Code/Charts -->
+  <rect x="48" y="50" width="104" height="66" rx="4" fill="#0f172a" />
+  <line x1="56" y1="64" x2="88" y2="64" stroke="#6366f1" stroke-width="3" stroke-linecap="round" />
+  <line x1="56" y1="74" x2="114" y2="74" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" />
+  <line x1="56" y1="84" x2="98" y2="84" stroke="#10b981" stroke-width="3" stroke-linecap="round" />
+  <circle cx="100" cy="47" r="1.5" fill="#38bdf8" />
+  <!-- Laptop Base Chassis -->
+  <path d="M 28 128 L 172 128 L 160 146 L 40 146 Z" fill="#334155" stroke="#475569" stroke-width="2" />
+  <!-- Trackpad Notch -->
+  <rect x="88" y="128" width="24" height="4" rx="2" fill="#64748b" />
+</svg>

@@ -1,0 +1,322 @@
+import React from 'react';
+
+export interface WebhookIngestionVisualProps {
+  className?: string;
+  idPrefix?: string;
+  showLivePulse?: boolean;
+}
+
+export const WebhookIngestionVisual: React.FC<WebhookIngestionVisualProps> = ({
+  className = '',
+  idPrefix = 'ingest-svg-',
+  showLivePulse = true,
+}) => {
+  // Scoped IDs to prevent collision across multiple SVG instances
+  const bgGradId = `${idPrefix}detectBg`;
+  const cardGradId = `${idPrefix}cardGrad`;
+  const badgeRedId = `${idPrefix}badgeRed`;
+  const pulseIndigoId = `${idPrefix}pulseIndigo`;
+  const glowBlurId = `${idPrefix}glowBlur`;
+
+  return (
+    <div
+      className={`relative w-full h-full min-h-[300px] sm:min-h-[380px] md:min-h-[420px] rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center border border-slate-800 shadow-2xl ${className}`}
+      style={{ aspectRatio: '16 / 10' }}
+    >
+      <svg
+        viewBox="0 0 800 500"
+        width="100%"
+        height="100%"
+        preserveAspectRatio="xMidYMid meet"
+        role="img"
+        aria-label="Webhook Ingestion Engine • Live 24/7"
+        className="w-full h-full block select-none"
+      >
+        <defs>
+          <linearGradient id={bgGradId} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#090d16" />
+            <stop offset="50%" stopColor="#0d1527" />
+            <stop offset="100%" stopColor="#1e1b4b" />
+          </linearGradient>
+
+          <linearGradient id={cardGradId} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#1e293b" stopOpacity={0.96} />
+            <stop offset="100%" stopColor="#0f172a" stopOpacity={0.98} />
+          </linearGradient>
+
+          <linearGradient id={badgeRedId} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#ef4444" />
+            <stop offset="100%" stopColor="#f43f5e" />
+          </linearGradient>
+
+          <linearGradient id={pulseIndigoId} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#6366f1" />
+            <stop offset="100%" stopColor="#818cf8" />
+          </linearGradient>
+
+          <filter id={glowBlurId} x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="16" result="blur" />
+          </filter>
+        </defs>
+
+        {/* Outer Background */}
+        <rect width="800" height="500" fill={`url(#${bgGradId})`} />
+
+        {/* Ambient Glows */}
+        <circle cx="680" cy="120" r="160" fill="#6366f1" opacity="0.22" filter={`url(#${glowBlurId})`} />
+        <circle cx="140" cy="380" r="140" fill="#f43f5e" opacity="0.15" filter={`url(#${glowBlurId})`} />
+
+        {/* Grid Mesh Overlay */}
+        <g stroke="#334155" strokeWidth="1" opacity="0.22">
+          <line x1="0" y1="80" x2="800" y2="80" />
+          <line x1="0" y1="160" x2="800" y2="160" />
+          <line x1="0" y1="240" x2="800" y2="240" />
+          <line x1="0" y1="320" x2="800" y2="320" />
+          <line x1="0" y1="400" x2="800" y2="400" />
+          <line x1="160" y1="0" x2="160" y2="500" />
+          <line x1="320" y1="0" x2="320" y2="500" />
+          <line x1="480" y1="0" x2="480" y2="500" />
+          <line x1="640" y1="0" x2="640" y2="500" />
+        </g>
+
+        {/* Central Real-time Ingestion Stream Window */}
+        <g transform="translate(60, 40)">
+          {/* Main Container Frame */}
+          <rect
+            width="680"
+            height="420"
+            rx="16"
+            fill={`url(#${cardGradId})`}
+            stroke="#334155"
+            strokeWidth="1.5"
+          />
+
+          {/* Header Bar */}
+          <path
+            d="M 0 16 Q 0 0 16 0 L 664 0 Q 680 0 680 16 L 680 44 L 0 44 Z"
+            fill="#090d16"
+          />
+          <circle cx="24" cy="22" r="5" fill="#ef4444" opacity="0.85" />
+          <circle cx="40" cy="22" r="5" fill="#f59e0b" opacity="0.85" />
+          <circle cx="56" cy="22" r="5" fill="#10b981" opacity="0.85" />
+
+          <text
+            x="76"
+            y="26"
+            fill="#cbd5e1"
+            fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+            fontSize="11"
+            fontWeight="700"
+            letterSpacing="0.6"
+          >
+            WEBHOOK INGESTION ENGINE • LIVE 24/7
+          </text>
+
+          {/* Live Throughput Badge */}
+          <rect
+            x="530"
+            y="12"
+            width="134"
+            height="22"
+            rx="11"
+            fill="#10b981"
+            fillOpacity="0.18"
+            stroke="#10b981"
+            strokeWidth="1"
+          />
+          <circle cx="544" cy="23" r="3.5" fill="#10b981" />
+          <text
+            x="556"
+            y="27"
+            fill="#34d399"
+            fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+            fontSize="10"
+            fontWeight="700"
+          >
+            1,420 EVT/SEC
+          </text>
+
+          {/* Gateway Source Pills */}
+          <g transform="translate(24, 60)">
+            {/* Razorpay Direct */}
+            <rect x="0" y="0" width="140" height="34" rx="8" fill="#1e293b" stroke="#3b82f6" strokeWidth="1.2" />
+            <circle cx="16" cy="17" r="4.5" fill="#3b82f6" />
+            <text x="30" y="21" fill="#f8fafc" fontFamily="-apple-system, sans-serif" fontSize="11" fontWeight="700">
+              Razorpay Direct
+            </text>
+
+            {/* Stripe Billing */}
+            <rect x="154" y="0" width="130" height="34" rx="8" fill="#1e293b" stroke="#6366f1" strokeWidth="1.2" />
+            <circle cx="170" cy="17" r="4.5" fill="#6366f1" />
+            <text x="184" y="21" fill="#f8fafc" fontFamily="-apple-system, sans-serif" fontSize="11" fontWeight="700">
+              Stripe Billing
+            </text>
+
+            {/* UPI / PhonePe */}
+            <rect x="298" y="0" width="140" height="34" rx="8" fill="#1e293b" stroke="#10b981" strokeWidth="1.2" />
+            <circle cx="314" cy="17" r="4.5" fill="#10b981" />
+            <text x="328" y="21" fill="#f8fafc" fontFamily="-apple-system, sans-serif" fontSize="11" fontWeight="700">
+              UPI / PhonePe
+            </text>
+
+            {/* Cashfree PG */}
+            <rect x="452" y="0" width="134" height="34" rx="8" fill="#1e293b" stroke="#f59e0b" strokeWidth="1.2" />
+            <circle cx="468" cy="17" r="4.5" fill="#f59e0b" />
+            <text x="482" y="21" fill="#f8fafc" fontFamily="-apple-system, sans-serif" fontSize="11" fontWeight="700">
+              Cashfree PG
+            </text>
+          </g>
+
+          {/* Incoming Webhook Event 1: Dropped Transaction Intercepted */}
+          <g transform="translate(24, 110)">
+            <rect width="632" height="74" rx="10" fill="#1c1917" stroke="#f43f5e" strokeWidth="1.5" />
+            <rect x="16" y="16" width="42" height="42" rx="8" fill="#f43f5e" fillOpacity="0.18" stroke="#f43f5e" strokeWidth="1" />
+            
+            {/* Exclamation Icon */}
+            <path d="M 37 26 L 37 38 M 37 46 L 37 47" stroke="#f43f5e" strokeWidth="3" strokeLinecap="round" />
+
+            <text x="70" y="32" fill="#f8fafc" fontFamily="-apple-system, sans-serif" fontSize="13" fontWeight="800">
+              payment.failed • HDFC_GATEWAY_TIMEOUT_504
+            </text>
+            <text
+              x="70"
+              y="53"
+              fill="#cbd5e1"
+              fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+              fontSize="11"
+            >
+              order_rzp_99421 • ₹8,499.00 • Customer: Priya Sharma
+            </text>
+
+            {/* Intercept Tag */}
+            <rect x="462" y="22" width="154" height="30" rx="6" fill={`url(#${badgeRedId})`} />
+            <text
+              x="539"
+              y="41"
+              fill="#ffffff"
+              fontFamily="-apple-system, sans-serif"
+              fontSize="10"
+              fontWeight="800"
+              textAnchor="middle"
+              letterSpacing="0.5"
+            >
+              INTERCEPTED IN 12ms
+            </text>
+          </g>
+
+          {/* Incoming Webhook Event 2: Ingested & Diagnosing */}
+          <g transform="translate(24, 196)">
+            <rect width="632" height="74" rx="10" fill="#0f172a" stroke="#3b82f6" strokeWidth="1.2" />
+            <rect x="16" y="16" width="42" height="42" rx="8" fill="#3b82f6" fillOpacity="0.18" stroke="#3b82f6" strokeWidth="1" />
+            
+            {/* Sync / Routing Icon */}
+            <path
+              d="M 28 37 C 28 30, 46 30, 46 37 M 46 43 C 46 50, 28 50, 28 43"
+              stroke="#60a5fa"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              fill="none"
+            />
+
+            <text x="70" y="32" fill="#f8fafc" fontFamily="-apple-system, sans-serif" fontSize="13" fontWeight="800">
+              invoice.payment_action_required • 3DS_DROPOFF
+            </text>
+            <text
+              x="70"
+              y="53"
+              fill="#94a3b8"
+              fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+              fontSize="11"
+            >
+              sub_inv_88102 • ₹14,500.00 • Customer: TechCorp India
+            </text>
+
+            {/* Status Tag */}
+            <rect x="462" y="22" width="154" height="30" rx="6" fill="#1e293b" stroke="#3b82f6" strokeWidth="1" />
+            <text
+              x="539"
+              y="41"
+              fill="#93c5fd"
+              fontFamily="-apple-system, sans-serif"
+              fontSize="10"
+              fontWeight="700"
+              textAnchor="middle"
+              letterSpacing="0.4"
+            >
+              ROUTING ENGINE ACTIVE
+            </text>
+          </g>
+
+          {/* Bottom Telemetry Metric Banner */}
+          <g transform="translate(24, 282)">
+            <rect width="632" height="68" rx="10" fill="#090d16" stroke="#334155" strokeWidth="1" />
+
+            <g transform="translate(20, 16)">
+              <text x="0" y="14" fill="#64748b" fontFamily="-apple-system, sans-serif" fontSize="10" fontWeight="700">
+                INTERCEPTION SPEED
+              </text>
+              <text
+                x="0"
+                y="38"
+                fill="#10b981"
+                fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+                fontSize="18"
+                fontWeight="800"
+              >
+                14.2 ms
+              </text>
+            </g>
+
+            <g transform="translate(170, 16)">
+              <text x="0" y="14" fill="#64748b" fontFamily="-apple-system, sans-serif" fontSize="10" fontWeight="700">
+                GATEWAY SYNC RATE
+              </text>
+              <text
+                x="0"
+                y="38"
+                fill="#f8fafc"
+                fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+                fontSize="18"
+                fontWeight="800"
+              >
+                99.99%
+              </text>
+            </g>
+
+            <g transform="translate(320, 16)">
+              <text x="0" y="14" fill="#64748b" fontFamily="-apple-system, sans-serif" fontSize="10" fontWeight="700">
+                PIPELINE BUFFER
+              </text>
+              <text
+                x="0"
+                y="38"
+                fill="#818cf8"
+                fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+                fontSize="18"
+                fontWeight="800"
+              >
+                0.00% Dropped
+              </text>
+            </g>
+
+            <g transform="translate(470, 16)">
+              <text x="0" y="14" fill="#64748b" fontFamily="-apple-system, sans-serif" fontSize="10" fontWeight="700">
+                SECURITY PROTOCOL
+              </text>
+              <text
+                x="0"
+                y="38"
+                fill="#38bdf8"
+                fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+                fontSize="14"
+                fontWeight="800"
+              >
+                HMAC-SHA256 ✓
+              </text>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  );
+};

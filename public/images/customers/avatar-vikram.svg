@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <linearGradient id="avVikram" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#451a03" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="64" fill="url(#avVikram)" />
+  <circle cx="64" cy="52" r="26" fill="#fed7aa" />
+  <!-- Beard & Hair -->
+  <path d="M 38 46 C 38 24, 90 24, 90 46 C 90 32, 70 30, 64 30 C 50 30, 38 38, 38 46 Z" fill="#1c1917" />
+  <path d="M 44 60 C 44 78, 84 78, 84 60 C 84 74, 76 80, 64 80 C 52 80, 44 74, 44 60 Z" fill="#1c1917" />
+  <!-- Body/Sweater -->
+  <path d="M 28 116 C 28 88, 100 88, 100 116 Z" fill="#b45309" />
+</svg>

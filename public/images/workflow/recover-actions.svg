@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="recBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="50%" stop-color="#064e3b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cardGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.98" />
+    </linearGradient>
+    <filter id="glowBlur3" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#recBg)" />
+  <circle cx="640" cy="180" r="160" fill="#10b981" opacity="0.18" filter="url(#glowBlur3)" />
+  <circle cx="160" cy="360" r="140" fill="#059669" opacity="0.15" filter="url(#glowBlur3)" />
+
+  <g transform="translate(60, 40)">
+    <!-- Main Frame -->
+    <rect width="680" height="420" rx="16" fill="url(#cardGrad3)" stroke="#10b981" stroke-width="1.5" />
+
+    <!-- Top Window Bar -->
+    <path d="M 0 16 Q 0 0 16 0 L 664 0 Q 680 0 680 16 L 680 44 L 0 44 Z" fill="#022c22" />
+    <circle cx="24" cy="22" r="5" fill="#ef4444" opacity="0.8" />
+    <circle cx="40" cy="22" r="5" fill="#f59e0b" opacity="0.8" />
+    <circle cx="56" cy="22" r="5" fill="#10b981" opacity="0.8" />
+    <text x="80" y="26" fill="#6ee7b7" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">AUTONOMOUS RECOVERY EXECUTION ENGINE</text>
+    
+    <rect x="520" y="12" width="144" height="20" rx="10" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1" />
+    <text x="592" y="26" fill="#a7f3d0" font-family="monospace" font-size="10" font-weight="700" text-anchor="middle">STATUS: SETTLED ✓</text>
+
+    <!-- Visual Recovery Pathways -->
+    <g transform="translate(24, 64)">
+      <!-- Step 1: Failed Node -->
+      <rect x="0" y="20" width="180" height="90" rx="10" fill="#1c1917" stroke="#ef4444" stroke-width="1" />
+      <text x="16" y="44" fill="#fca5a5" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">PRIMARY GATEWAY</text>
+      <text x="16" y="66" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="13" font-weight="800">504 Outage</text>
+      <text x="16" y="88" fill="#94a3b8" font-family="monospace" font-size="10">Dropped at 10:14:02</text>
+
+      <!-- Connecting Arrow 1 -->
+      <path d="M 190 65 L 240 65" stroke="#10b981" stroke-width="3" stroke-dasharray="4,4" />
+      <polygon points="245,65 235,60 235,70" fill="#10b981" />
+
+      <!-- Step 2: Autonomous Switch -->
+      <rect x="250" y="10" width="200" height="110" rx="12" fill="#022c22" stroke="#10b981" stroke-width="1.5" />
+      <rect x="264" y="22" width="172" height="24" rx="6" fill="#10b981" />
+      <text x="350" y="38" fill="#022c22" font-family="-apple-system, sans-serif" font-size="10" font-weight="800" text-anchor="middle">SMART RE-ROUTE &amp; RETRY</text>
+      <text x="266" y="66" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12" font-weight="700">UPI Dynamic Intent</text>
+      <text x="266" y="86" fill="#6ee7b7" font-family="monospace" font-size="11">Backup PG: Razorpay Direct</text>
+      <text x="266" y="104" fill="#a7f3d0" font-family="monospace" font-size="9">Delay: 850ms • Zero Re-entry</text>
+
+      <!-- Connecting Arrow 2 -->
+      <path d="M 460 65 L 500 65" stroke="#10b981" stroke-width="3" />
+      <polygon points="505,65 495,60 495,70" fill="#10b981" />
+
+      <!-- Step 3: Success Confirmation -->
+      <rect x="510" y="20" width="150" height="90" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+      <text x="524" y="44" fill="#34d399" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">REVENUE SECURED</text>
+      <text x="524" y="68" fill="#10b981" font-family="monospace" font-size="16" font-weight="900">₹8,499.00</text>
+      <text x="524" y="88" fill="#cbd5e1" font-family="monospace" font-size="9">Settled in 340ms</text>
+    </g>
+
+    <!-- Alternate Multi-Channel Rescue Cards -->
+    <g transform="translate(24, 210)">
+      <rect width="632" height="135" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      
+      <text x="20" y="28" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">MULTI-CHANNEL RECOVERY RUNBOOKS</text>
+
+      <g transform="translate(20, 42)">
+        <rect width="186" height="74" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1" />
+        <text x="14" y="24" fill="#34d399" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">Instant UPI Intent</text>
+        <text x="14" y="42" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Auto-triggers PhonePe/GPay</text>
+        <text x="14" y="60" fill="#10b981" font-family="monospace" font-size="10" font-weight="800">82.4% Recovery Rate</text>
+      </g>
+
+      <g transform="translate(222, 42)">
+        <rect width="186" height="74" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1" />
+        <text x="14" y="24" fill="#60a5fa" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">1-Click WhatsApp Link</text>
+        <text x="14" y="42" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Personalized tokenized cart</text>
+        <text x="14" y="60" fill="#60a5fa" font-family="monospace" font-size="10" font-weight="800">68.1% Recovery Rate</text>
+      </g>
+
+      <g transform="translate(424, 42)">
+        <rect width="186" height="74" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1" />
+        <text x="14" y="24" fill="#c084fc" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">Smart Dunning Email</text>
+        <text x="14" y="42" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Subscription auto-update</text>
+        <text x="14" y="60" fill="#c084fc" font-family="monospace" font-size="10" font-weight="800">74.9% Recovery Rate</text>
+      </g>
+    </g>
+  </g>
+</svg>

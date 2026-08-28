@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="measBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="cardGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.98" />
+    </linearGradient>
+    <linearGradient id="chartArea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.0" />
+    </linearGradient>
+    <filter id="glowBlur4" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#measBg)" />
+  <circle cx="240" cy="180" r="160" fill="#3b82f6" opacity="0.15" filter="url(#glowBlur4)" />
+  <circle cx="680" cy="340" r="150" fill="#10b981" opacity="0.18" filter="url(#glowBlur4)" />
+
+  <g transform="translate(60, 40)">
+    <!-- Main Frame -->
+    <rect width="680" height="420" rx="16" fill="url(#cardGrad4)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Top Window Bar -->
+    <path d="M 0 16 Q 0 0 16 0 L 664 0 Q 680 0 680 16 L 680 44 L 0 44 Z" fill="#090d16" />
+    <circle cx="24" cy="22" r="5" fill="#ef4444" opacity="0.8" />
+    <circle cx="40" cy="22" r="5" fill="#f59e0b" opacity="0.8" />
+    <circle cx="56" cy="22" r="5" fill="#10b981" opacity="0.8" />
+    <text x="80" y="26" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">REVENUE RECOVERY PERFORMANCE &amp; LIFT ROI</text>
+    
+    <rect x="520" y="12" width="144" height="20" rx="10" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1" />
+    <text x="592" y="26" fill="#34d399" font-family="monospace" font-size="10" font-weight="800" text-anchor="middle">+24.8% REVENUE LIFT</text>
+
+    <!-- Top Metric Cards -->
+    <g transform="translate(24, 60)">
+      <rect width="198" height="74" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1" />
+      <text x="16" y="26" fill="#6ee7b7" font-family="-apple-system, sans-serif" font-size="10" font-weight="700">RECOVERED REVENUE</text>
+      <text x="16" y="54" fill="#10b981" font-family="monospace" font-size="20" font-weight="900">₹24,82,400</text>
+
+      <g transform="translate(216, 0)">
+        <rect width="198" height="74" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1" />
+        <text x="16" y="26" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10" font-weight="700">AUTONOMOUS WIN RATE</text>
+        <text x="16" y="54" fill="#f8fafc" font-family="monospace" font-size="20" font-weight="900">76.4%</text>
+      </g>
+
+      <g transform="translate(432, 0)">
+        <rect width="200" height="74" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1" />
+        <text x="16" y="26" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10" font-weight="700">AVERAGE RECOVERY TIME</text>
+        <text x="16" y="54" fill="#818cf8" font-family="monospace" font-size="20" font-weight="900">14.2 sec</text>
+      </g>
+    </g>
+
+    <!-- Mini Area Chart Visual -->
+    <g transform="translate(24, 150)">
+      <rect width="632" height="190" rx="10" fill="#090d16" stroke="#334155" stroke-width="1" />
+      <text x="20" y="28" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">7-Day Cumulative Recovered GMV vs Baseline</text>
+
+      <!-- Chart Grid Lines -->
+      <line x1="40" y1="50" x2="590" y2="50" stroke="#1e293b" stroke-width="1" stroke-dasharray="3,3" />
+      <line x1="40" y1="90" x2="590" y2="90" stroke="#1e293b" stroke-width="1" stroke-dasharray="3,3" />
+      <line x1="40" y1="130" x2="590" y2="130" stroke="#1e293b" stroke-width="1" stroke-dasharray="3,3" />
+
+      <!-- Area Path -->
+      <path d="M 40 140 L 120 125 L 200 110 L 280 95 L 360 80 L 440 60 L 520 48 L 590 40 L 590 150 L 40 150 Z" fill="url(#chartArea)" />
+      
+      <!-- Green Trend Line -->
+      <path d="M 40 140 L 120 125 L 200 110 L 280 95 L 360 80 L 440 60 L 520 48 L 590 40" fill="none" stroke="#10b981" stroke-width="3" />
+      
+      <!-- Red Dropped Baseline -->
+      <path d="M 40 145 L 120 142 L 200 138 L 280 140 L 360 135 L 440 132 L 520 130 L 590 128" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4,4" />
+
+      <!-- Markers -->
+      <circle cx="590" cy="40" r="5" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+      
+      <text x="40" y="172" fill="#64748b" font-family="monospace" font-size="10">Mon</text>
+      <text x="130" y="172" fill="#64748b" font-family="monospace" font-size="10">Tue</text>
+      <text x="220" y="172" fill="#64748b" font-family="monospace" font-size="10">Wed</text>
+      <text x="310" y="172" fill="#64748b" font-family="monospace" font-size="10">Thu</text>
+      <text x="400" y="172" fill="#64748b" font-family="monospace" font-size="10">Fri</text>
+      <text x="490" y="172" fill="#64748b" font-family="monospace" font-size="10">Sat</text>
+      <text x="580" y="172" fill="#34d399" font-family="monospace" font-size="10" font-weight="700">Sun</text>
+    </g>
+  </g>
+</svg>

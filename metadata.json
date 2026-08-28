@@ -1,0 +1,8 @@
+{
+  "name": "RecoverAI - Autonomous Revenue Recovery Platform",
+  "description": "Production-grade fintech platform that detects at-risk revenue, diagnoses payment failures, calculates recovery probability, and executes bounded recovery workflows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

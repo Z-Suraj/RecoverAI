@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bagBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="20" fill="url(#bagBg)" />
+  <!-- Handle -->
+  <path d="M 76 66 C 76 44, 124 44, 124 66" fill="none" stroke="#92400e" stroke-width="6" stroke-linecap="round" />
+  <!-- Bag Body -->
+  <rect x="42" y="66" width="116" height="86" rx="14" fill="#78350f" stroke="#b45309" stroke-width="2.5" />
+  <!-- Flap -->
+  <path d="M 42 66 L 158 66 L 158 102 L 100 118 L 42 102 Z" fill="#92400e" stroke="#b45309" stroke-width="2" />
+  <!-- Buckle -->
+  <rect x="92" y="108" width="16" height="18" rx="4" fill="#f59e0b" stroke="#d97706" stroke-width="1.5" />
+  <circle cx="100" cy="117" r="3" fill="#78350f" />
+</svg>
