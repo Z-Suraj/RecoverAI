@@ -3,6 +3,8 @@ import { apiClient } from '../api/client';
 import { usePlatform } from '../context/PlatformContext';
 import { AuditLog } from '../types';
 import { formatDateTime } from '../utils/formatters';
+import { VISUAL_ASSETS } from '../assets/images';
+import { SafeImage } from '../components/common/SafeImage';
 import {
   ScrollText,
   Search,
@@ -16,7 +18,11 @@ import {
   Lock,
   FileCheck,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  ShieldAlert,
+  Key,
+  Database,
+  Cpu
 } from 'lucide-react';
 
 export const AuditLogPage: React.FC = () => {
@@ -73,31 +79,40 @@ export const AuditLogPage: React.FC = () => {
 
   return (
     <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header Bento Banner */}
-      <div className="bento-card p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center space-x-2.5">
-            <div className="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center">
-              <ScrollText className="w-5 h-5" />
+      {/* Header Bento Banner with Photorealistic Cybersecurity Audit Trail Background */}
+      <div className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 border-slate-800 shadow-lg">
+        {/* Photorealistic Cybersecurity & Encryption Ledger Visual */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <SafeImage
+            src={VISUAL_ASSETS.cybersecurityAudit}
+            alt="Cryptographic Audit Trail & Security Ledger"
+            fallbackType="hero"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+        </div>
+
+        <div className="relative z-10 flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-300 flex items-center justify-center border border-cyan-500/30 shadow-inner shrink-0">
+            <ShieldCheck className="w-6 h-6 text-cyan-300" />
+          </div>
+          <div>
+            <div className="flex items-center space-x-2">
+              <h2 className="text-lg font-extrabold text-white tracking-tight">Compliance & Cryptographic Audit Trail</h2>
+              <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                {filteredLogs.length} Immutable Records
+              </span>
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Compliance & Audit Trail</h2>
-                <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
-                  {filteredLogs.length} Immutable Records
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Cryptographically verifiable event log of all AI recovery policy evaluations, automated executions, and operator approvals.
-              </p>
-            </div>
+            <p className="text-xs text-slate-300 mt-1 max-w-2xl">
+              Tamper-evident event log recording all AI recovery evaluations, policy guardrail approvals, autonomous retries, and operator overrides.
+            </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-2.5">
+        <div className="relative z-10 flex items-center space-x-2.5">
           <button
             onClick={handleExportAudit}
-            className="px-3.5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center space-x-1.5 shadow-xs transition-colors cursor-pointer"
+            className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition-colors cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export Audit Trail</span>

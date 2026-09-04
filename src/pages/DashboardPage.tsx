@@ -3,10 +3,8 @@ import { apiClient } from '../api/client';
 import { usePlatform } from '../context/PlatformContext';
 import { DashboardSummary, RevenueChartPoint, RecoveryOpportunity } from '../types';
 import { formatINR, formatPercent, formatRelativeTime } from '../utils/formatters';
-import { getCustomerAvatar, getProductForTransaction, CONTEXT_IMAGES } from '../utils/avatarUtils';
-import bannerImg from '../assets/images/fintech_banner_1787764601732.jpg';
-import aiEngineImg from '../assets/images/ai_engine_visual_1787764618449.jpg';
-import paymentSuccessImg from '../assets/images/payment_success_visual_1787764658923.jpg';
+import { getCustomerAvatar, getProductForTransaction } from '../utils/avatarUtils';
+import { VISUAL_ASSETS } from '../assets/images';
 import {
   PriorityBadge,
   OpportunityStatusBadge,
@@ -25,7 +23,14 @@ import {
   ChevronRight,
   CheckCircle2,
   Cpu,
-  Layers
+  Layers,
+  Activity,
+  CreditCard,
+  Building,
+  Radio,
+  Sliders,
+  Flame,
+  LineChart
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -144,16 +149,16 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ navigate }) => {
         id="dashboard-header-banner"
         className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-slate-800 shadow-lg"
       >
-        {/* Ambient background image */}
-        <div className="absolute inset-0 pointer-events-none opacity-25 mix-blend-screen overflow-hidden bg-slate-950">
+        {/* Photorealistic FinTech Mission Control Operations Background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <SafeImage
-            src={bannerImg}
-            alt="Fintech Payment Flow"
+            src={VISUAL_ASSETS.missionControlHero}
+            alt="Fintech Mission Control Operations"
             fallbackType="hero"
             fallbackText="Fintech Revenue Stream"
-            className="w-full h-full object-cover object-right-top"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
           />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
         </div>
 
         <div className="relative z-10 space-y-1">
@@ -376,7 +381,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ navigate }) => {
 
           <div className="md:w-1/3 w-full h-48 md:h-56 relative overflow-hidden shrink-0 border-t md:border-t-0 md:border-l border-slate-800 bg-slate-950">
             <SafeImage
-              src={CONTEXT_IMAGES.recoveryInsight}
+              src={VISUAL_ASSETS.recoveryQueue}
               alt="Checkout Recovery Operations"
               fallbackType="context"
               fallbackText="Checkout Insights"
@@ -553,7 +558,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ navigate }) => {
             <div className="flex items-center space-x-3">
               <div className="w-9 h-9 rounded-lg overflow-hidden border border-indigo-400/40 shrink-0 bg-slate-900">
                 <SafeImage
-                  src={aiEngineImg}
+                  src={VISUAL_ASSETS.copilotAnalyst}
                   alt="AI Engine"
                   fallbackType="icon"
                   className="w-full h-full object-cover"

@@ -3,7 +3,8 @@ import { apiClient } from '../api/client';
 import { usePlatform } from '../context/PlatformContext';
 import { RecoveryOpportunity } from '../types';
 import { formatINR } from '../utils/formatters';
-import { getCustomerAvatar, getProductForTransaction, CONTEXT_IMAGES } from '../utils/avatarUtils';
+import { getCustomerAvatar, getProductForTransaction } from '../utils/avatarUtils';
+import { VISUAL_ASSETS } from '../assets/images';
 import {
   PriorityBadge,
   OpportunityStatusBadge,
@@ -22,7 +23,15 @@ import {
   Layers,
   ChevronRight,
   TrendingUp,
-  AlertTriangle
+  AlertTriangle,
+  CreditCard,
+  Building,
+  ShieldCheck,
+  Zap,
+  Activity,
+  CheckCircle2,
+  Clock,
+  ArrowRight
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { RecoveryExecutionModal } from '../components/modals/RecoveryExecutionModal';
@@ -133,36 +142,42 @@ export const RecoveryQueuePage: React.FC<RecoveryQueuePageProps> = ({ navigate }
 
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header Bento Banner with Metric Badges */}
-      <div className="bento-card relative overflow-hidden p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center space-x-4">
-          <div className="w-12 h-12 rounded-xl overflow-hidden border border-slate-200 shadow-xs shrink-0 hidden sm:block">
-            <SafeImage
-              src={CONTEXT_IMAGES.recoveryOperations}
-              alt="Recovery Operations"
-              fallbackType="context"
-              className="w-full h-full object-cover"
-            />
+      {/* Header Bento Banner with Realistic Recovery Ops Center Background */}
+      <div className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 border-slate-800 shadow-lg">
+        {/* Photorealistic Operations Center Background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <SafeImage
+            src={VISUAL_ASSETS.recoveryQueue}
+            alt="Payment Recovery Operations Center"
+            fallbackType="hero"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+        </div>
+
+        <div className="relative z-10 flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center border border-indigo-500/30 shadow-inner shrink-0">
+            <RotateCcw className="w-6 h-6 text-indigo-300" />
           </div>
           <div>
             <div className="flex items-center space-x-3">
-              <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Recovery Operations Queue</h2>
-              <span className="text-[10px] font-bold font-mono px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+              <h2 className="text-lg font-extrabold text-white tracking-tight">Recovery Operations Queue</h2>
+              <span className="text-[10px] font-bold font-mono px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
                 <AnimatedCounter value={opportunities.length} suffix=" Active Items" />
               </span>
             </div>
-            <p className="text-xs text-slate-500 mt-1">
-              Priority-ranked leakage opportunities with continuous AI diagnosis, latency tracking, and policy-bounded execution.
+            <p className="text-xs text-slate-300 mt-1 max-w-2xl">
+              Priority-ranked leakage opportunities with continuous AI diagnosis, payment routing triage, and policy-bounded automated execution.
             </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="relative z-10 flex items-center space-x-3">
           <div className="text-right">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
               Filtered Volume
             </span>
-            <span className="text-sm font-black font-mono text-slate-900">
+            <span className="text-sm font-black font-mono text-white">
               <AnimatedCounter value={totalPipelineAmount} prefix="₹" />
             </span>
           </div>
@@ -172,7 +187,7 @@ export const RecoveryQueuePage: React.FC<RecoveryQueuePageProps> = ({ navigate }
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex items-center space-x-3 bg-slate-900 text-white px-4 py-2 rounded-xl shadow-lg border border-slate-800"
+              className="flex items-center space-x-3 bg-slate-900/95 backdrop-blur-md text-white px-4 py-2 rounded-xl shadow-lg border border-slate-700"
             >
               <span className="text-xs font-bold font-mono">
                 {selectedIds.length} Selected ({formatINR(totalSelectedAmount)})

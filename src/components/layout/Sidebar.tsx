@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { usePlatform } from '../../context/PlatformContext';
+import { VISUAL_ASSETS } from '../../assets/images';
 
 interface SidebarProps {
   currentPath: string;
@@ -41,23 +42,30 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPath, navigate }) => {
 
   return (
     <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col h-screen sticky top-0 shrink-0 border-r border-slate-800 select-none">
-      {/* Brand Header */}
-      <div className="p-5 border-b border-slate-800 flex items-center justify-between">
+      {/* Brand Header with Official RecoverAI Brand Logo */}
+      <div className="p-4 border-b border-slate-800 flex items-center justify-between">
         <button
           onClick={() => navigate('/dashboard')}
-          className="flex items-center space-x-2.5 text-left group focus:outline-none"
+          className="flex items-center space-x-3 text-left group focus:outline-none w-full"
         >
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-black shadow-md shadow-indigo-600/30 group-hover:bg-indigo-500 transition-all">
-            <RotateCcw className="w-4 h-4 text-white animate-[spin_10s_linear_infinite]" />
+          <div className="w-11 h-11 rounded-xl overflow-hidden shadow-lg shadow-indigo-600/30 border border-slate-700/80 bg-slate-950 flex items-center justify-center shrink-0 group-hover:border-indigo-500 group-hover:scale-105 transition-all">
+            <img
+              src={VISUAL_ASSETS.brandLogo}
+              alt="RecoverAI Logo"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-center"
+            />
           </div>
-          <div>
+          <div className="min-w-0 flex-1">
             <div className="flex items-center space-x-1.5">
-              <span className="font-extrabold text-base tracking-tight text-white">RecoverAI</span>
+              <span className="font-extrabold text-base tracking-tight text-white group-hover:text-indigo-300 transition-colors">
+                RecoverAI
+              </span>
               <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-indigo-950 text-indigo-400 border border-indigo-800/60">
                 FinOps
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 font-medium">Revenue Recovery Engine</p>
+            <p className="text-[11px] text-slate-400 font-medium truncate">Recover • Analyze • Grow</p>
           </div>
         </button>
       </div>

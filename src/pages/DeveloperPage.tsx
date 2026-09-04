@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { apiClient } from '../api/client';
 import { usePlatform } from '../context/PlatformContext';
 import { WebhookIngestionVisual } from '../components/dashboard/WebhookIngestionVisual';
+import { VISUAL_ASSETS } from '../assets/images';
+import { SafeImage } from '../components/common/SafeImage';
 import {
   Code2,
   Key,
@@ -197,24 +199,33 @@ func main() {
 
   return (
     <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header Bento Banner */}
-      <div className="bento-card p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center space-x-2.5">
-            <div className="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center">
-              <Code2 className="w-5 h-5" />
+      {/* Header Bento Banner with Photorealistic Developer Datacenter Background */}
+      <div className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 border-slate-800 shadow-lg">
+        {/* Photorealistic Developer Cloud Datacenter Background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <SafeImage
+            src={VISUAL_ASSETS.developerTerminal}
+            alt="Cloud Engineering & API Datacenter"
+            fallbackType="hero"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+        </div>
+
+        <div className="relative z-10 flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center border border-indigo-500/30 shadow-inner shrink-0">
+            <Code2 className="w-6 h-6 text-indigo-300" />
+          </div>
+          <div>
+            <div className="flex items-center space-x-2">
+              <h2 className="text-lg font-extrabold text-white tracking-tight">Developer API & Webhook Ingestion</h2>
+              <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                v1.4 REST & Webhooks
+              </span>
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Developer API & Webhook Ingestion</h2>
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
-                  v1.4 REST & Webhooks
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Manage API credentials, test real-time failure webhooks, and integrate SDKs across your payment stacks.
-              </p>
-            </div>
+            <p className="text-xs text-slate-300 mt-1 max-w-2xl">
+              Cryptographically signed API credentials, interactive real-time failure simulation webhooks, and production SDK client bindings.
+            </p>
           </div>
         </div>
       </div>

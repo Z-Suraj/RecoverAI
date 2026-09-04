@@ -37,6 +37,7 @@ import {
   Cell
 } from 'recharts';
 import { SafeImage } from '../components/common/SafeImage';
+import { VISUAL_ASSETS } from '../assets/images';
 import { usePlatform } from '../context/PlatformContext';
 import { CONTEXT_IMAGES } from '../utils/avatarUtils';
 
@@ -191,28 +192,37 @@ export const AnalyticsPage: React.FC = () => {
 
   return (
     <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header Bento Title with Telemetry Overview */}
-      <div className="bento-card p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center space-x-2.5">
-            <div className="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center">
-              <BarChart3 className="w-5 h-5" />
+      {/* Header Bento Banner with Photorealistic Analytics & Telemetry Background */}
+      <div className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-slate-800 shadow-lg">
+        {/* Photorealistic Digital Payment & Telemetry Network Background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <SafeImage
+            src={VISUAL_ASSETS.transactions}
+            alt="Recovery Analytics & Telemetry"
+            fallbackType="hero"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+        </div>
+
+        <div className="relative z-10 flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center border border-indigo-500/30 shadow-inner shrink-0">
+            <BarChart3 className="w-6 h-6 text-indigo-300" />
+          </div>
+          <div>
+            <div className="flex items-center space-x-2">
+              <h2 className="text-lg font-extrabold text-white tracking-tight">Recovery Analytics & Telemetry</h2>
+              <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                {timeRange} Window
+              </span>
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Recovery Analytics & Telemetry</h2>
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
-                  {timeRange} Window
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Autonomous intervention attribution, velocity benchmarks, and financial return on recovery operations.
-              </p>
-            </div>
+            <p className="text-xs text-slate-300 mt-1 max-w-2xl">
+              Autonomous intervention attribution, velocity benchmarks, and financial return on recovery operations.
+            </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-2.5 flex-wrap gap-2">
+        <div className="relative z-10 flex items-center space-x-2.5 flex-wrap gap-2">
           {/* Time range selector */}
           <div className="flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200">
             {(['7D', '30D', '90D', '1Y'] as const).map((r) => (

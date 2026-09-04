@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { apiClient } from '../api/client';
 import { RecoveryExperiment } from '../types';
 import { formatINR } from '../utils/formatters';
+import { VISUAL_ASSETS } from '../assets/images';
+import { SafeImage } from '../components/common/SafeImage';
 import {
   FlaskConical,
   TrendingUp,
@@ -16,7 +18,11 @@ import {
   Award,
   ArrowUpRight,
   Sliders,
-  X
+  X,
+  Activity,
+  Cpu,
+  LineChart,
+  Layers
 } from 'lucide-react';
 import { usePlatform } from '../context/PlatformContext';
 
@@ -105,31 +111,40 @@ export const ExperimentsPage: React.FC = () => {
 
   return (
     <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header Bento Banner */}
-      <div className="bento-card p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center space-x-2.5">
-            <div className="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center">
-              <FlaskConical className="w-5 h-5" />
+      {/* Header Bento Banner with Photorealistic AI Experimentation Lab Background */}
+      <div className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-slate-800 shadow-lg">
+        {/* Photorealistic Quantitative AI Research Lab Background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <SafeImage
+            src={VISUAL_ASSETS.aiExperimentation}
+            alt="AI Financial Experimentation & Model Testing"
+            fallbackType="hero"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+        </div>
+
+        <div className="relative z-10 flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center border border-purple-500/30 shadow-inner shrink-0">
+            <FlaskConical className="w-6 h-6 text-purple-300" />
+          </div>
+          <div>
+            <div className="flex items-center space-x-2">
+              <h2 className="text-lg font-extrabold text-white tracking-tight">Recovery Policy Experiments (A/B)</h2>
+              <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                {experiments.filter((e) => e.status === 'ACTIVE').length} Running Tests
+              </span>
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Recovery Policy Experiments (A/B)</h2>
-                <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
-                  {experiments.filter((e) => e.status === 'ACTIVE').length} Running Tests
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Empirically evaluate recovery channels, latency delays, and routing strategies for maximum conversion yield.
-              </p>
-            </div>
+            <p className="text-xs text-slate-300 mt-1 max-w-2xl">
+              Empirically evaluate recovery channels, latency delays, and routing strategies against real-world payment failure traffic.
+            </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-2.5">
+        <div className="relative z-10 flex items-center space-x-2.5">
           <button
             onClick={() => setShowCreateModal(true)}
-            className="px-3.5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center space-x-1.5 shadow-xs transition-colors cursor-pointer"
+            className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition-colors cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>New A/B Experiment</span>

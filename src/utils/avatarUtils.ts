@@ -1,13 +1,14 @@
 // Realistic avatar, product thumbnails, and commerce photography assets helper
-import recoveryOpsImg from '../assets/images/recovery_ops_center_1787940824151.jpg';
-import digitalPaymentPosImg from '../assets/images/digital_payment_pos_1787940839126.jpg';
-import customerDigitalPayImg from '../assets/images/customer_digital_pay_1787940853039.jpg';
-import fintechAnalyticsOpsImg from '../assets/images/fintech_analytics_ops_1787940869134.jpg';
-import aiDetectionMonitorImg from '../assets/images/ai_detection_monitor_1787940884567.jpg';
-import fintechCopilotAnalystImg from '../assets/images/fintech_copilot_analyst_1787940900531.jpg';
-import fintechBannerImg from '../assets/images/fintech_banner_1787764601732.jpg';
-import aiEngineVisualImg from '../assets/images/ai_engine_visual_1787764618449.jpg';
-import paymentSuccessVisualImg from '../assets/images/payment_success_visual_1787764658923.jpg';
+import { VISUAL_ASSETS } from '../assets/images';
+import recoveryOpsImg from '../assets/images/recovery_ops_center_1788018009757.jpg';
+import digitalPaymentPosImg from '../assets/images/digital_payment_network_1788018027299.jpg';
+import customerDigitalPayImg from '../assets/images/customer_intelligence_1788018043085.jpg';
+import fintechAnalyticsOpsImg from '../assets/images/ai_model_experiment_1788018076951.jpg';
+import aiDetectionMonitorImg from '../assets/images/fintech_simulation_lab_1788018060107.jpg';
+import fintechCopilotAnalystImg from '../assets/images/copilot_financial_ai_1788018127879.jpg';
+import fintechBannerImg from '../assets/images/fintech_mission_control_1788017990895.jpg';
+import cybersecurityImg from '../assets/images/cybersecurity_audit_center_1788018094479.jpg';
+import developerCloudImg from '../assets/images/developer_cloud_terminal_1788018111159.jpg';
 
 export {
   recoveryOpsImg,
@@ -17,8 +18,9 @@ export {
   aiDetectionMonitorImg,
   fintechCopilotAnalystImg,
   fintechBannerImg,
-  aiEngineVisualImg,
-  paymentSuccessVisualImg,
+  cybersecurityImg,
+  developerCloudImg,
+  VISUAL_ASSETS,
 };
 
 export const GATEWAY_LOGOS: Record<string, { name: string; color: string; bg: string; iconUrl?: string }> = {

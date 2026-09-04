@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { RotateCcw, Building2, User, Mail, Lock } from 'lucide-react';
+import { VISUAL_ASSETS } from '../assets/images';
 
 interface SignupPageProps {
   navigate: (path: string) => void;
@@ -33,9 +34,15 @@ export const SignupPage: React.FC<SignupPageProps> = ({ navigate }) => {
         <div className="flex justify-center mb-4">
           <button
             onClick={() => navigate('/')}
-            className="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-600/30"
+            className="w-16 h-16 rounded-2xl overflow-hidden shadow-2xl shadow-indigo-600/40 border border-slate-700/80 bg-slate-950 flex items-center justify-center hover:scale-105 transition-transform cursor-pointer"
+            title="Return to Home"
           >
-            <RotateCcw className="w-6 h-6 text-white animate-[spin_10s_linear_infinite]" />
+            <img
+              src={VISUAL_ASSETS.brandLogo}
+              alt="RecoverAI Logo"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover"
+            />
           </button>
         </div>
         <h2 className="text-center text-2xl font-extrabold text-white tracking-tight">

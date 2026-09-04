@@ -3,8 +3,9 @@ import { apiClient } from '../api/client';
 import { Customer, Transaction } from '../types';
 import { formatINR, formatDateTime } from '../utils/formatters';
 import { getCustomerAvatar } from '../utils/avatarUtils';
+import { VISUAL_ASSETS } from '../assets/images';
 import { TransactionStatusBadge, FailureReasonLabel } from '../components/common/StatusBadge';
-import { ArrowLeft, User, Phone, Mail, MapPin, ShieldCheck, CreditCard, ChevronRight } from 'lucide-react';
+import { ArrowLeft, User, Phone, Mail, MapPin, ShieldCheck, CreditCard, ChevronRight, TrendingUp, Sparkles, Building, Layers } from 'lucide-react';
 import { SafeImage } from '../components/common/SafeImage';
 
 interface CustomerDetailPageProps {
@@ -50,12 +51,23 @@ export const CustomerDetailPage: React.FC<CustomerDetailPageProps> = ({ customer
 
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header Bento Banner with Avatar */}
-      <div className="bento-card p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center space-x-4">
+      {/* Header Bento Banner with Photorealistic Background */}
+      <div className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 border-slate-800 shadow-lg">
+        {/* Photorealistic Customer Analytics Background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <SafeImage
+            src={VISUAL_ASSETS.customerIntelligence}
+            alt="Customer Intelligence Profile"
+            fallbackType="hero"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+        </div>
+
+        <div className="relative z-10 flex items-center space-x-4">
           <button
             onClick={() => navigate('/customers')}
-            className="p-2 rounded-xl bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer shrink-0"
+            className="p-2 rounded-xl bg-slate-900/90 border border-slate-700 hover:bg-slate-800 text-slate-300 transition-colors cursor-pointer shrink-0"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
@@ -64,25 +76,25 @@ export const CustomerDetailPage: React.FC<CustomerDetailPageProps> = ({ customer
             alt={customer.name}
             fallbackType="initials"
             fallbackText={customer.name}
-            className="w-14 h-14 rounded-2xl object-cover border-2 border-indigo-100 shadow-md shrink-0"
+            className="w-14 h-14 rounded-2xl object-cover border-2 border-indigo-500/50 shadow-md shrink-0"
           />
           <div>
             <div className="flex items-center space-x-2">
-              <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">{customer.name}</h2>
-              <span className="text-[10px] font-mono bg-slate-100 px-2 py-0.5 rounded-full text-slate-700 font-bold border border-slate-200">
+              <h2 className="text-lg font-extrabold text-white tracking-tight">{customer.name}</h2>
+              <span className="text-[10px] font-mono bg-slate-900/90 px-2 py-0.5 rounded-full text-slate-300 font-bold border border-slate-700">
                 {customer.id}
               </span>
               <span
                 className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
                   customer.riskScore === 'LOW'
-                    ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                    : 'bg-amber-50 text-amber-700 border-amber-200'
+                    ? 'bg-emerald-950/80 text-emerald-300 border-emerald-800/80'
+                    : 'bg-amber-950/80 text-amber-300 border-amber-800/80'
                 }`}
               >
                 {customer.riskScore} RISK
               </span>
             </div>
-            <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 mt-1.5">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300 mt-1.5">
               <span className="flex items-center space-x-1">
                 <Mail className="w-3.5 h-3.5 text-slate-400" />
                 <span>{customer.email}</span>
@@ -99,10 +111,10 @@ export const CustomerDetailPage: React.FC<CustomerDetailPageProps> = ({ customer
           </div>
         </div>
 
-        <div className="flex items-center space-x-2">
-          <div className="px-3 py-1.5 rounded-xl bg-indigo-50 border border-indigo-200 text-xs">
-            <span className="text-[10px] font-bold text-indigo-700 uppercase block">Preferred Gateway</span>
-            <span className="font-extrabold text-indigo-950">{customer.preferredPaymentMethod}</span>
+        <div className="relative z-10 flex items-center space-x-2">
+          <div className="px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-700 text-xs backdrop-blur-xs">
+            <span className="text-[10px] font-bold text-slate-400 uppercase block">Preferred Method</span>
+            <span className="font-extrabold text-white">{customer.preferredPaymentMethod}</span>
           </div>
         </div>
       </div>

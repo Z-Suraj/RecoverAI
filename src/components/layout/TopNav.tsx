@@ -21,6 +21,7 @@ import { useAuth } from '../../context/AuthContext';
 import { usePlatform } from '../../context/PlatformContext';
 import { formatRelativeTime } from '../../utils/formatters';
 import { SafeImage } from '../common/SafeImage';
+import { VISUAL_ASSETS } from '../../assets/images';
 
 interface TopNavProps {
   navigate: (path: string) => void;
@@ -51,7 +52,21 @@ export const TopNav: React.FC<TopNavProps> = ({ navigate }) => {
   return (
     <header className="h-16 bg-white border-b border-slate-200 sticky top-0 z-30 px-6 flex items-center justify-between">
       {/* Left section: Greeting & Real-time Connection Telemetry */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-3.5">
+        {/* Mobile brand touchpoint when sidebar is hidden */}
+        <button
+          onClick={() => navigate('/dashboard')}
+          className="md:hidden flex items-center shrink-0 rounded-lg overflow-hidden border border-slate-200 shadow-xs w-8 h-8 bg-slate-900 hover:opacity-90 transition-opacity"
+          title="RecoverAI Home"
+        >
+          <img
+            src={VISUAL_ASSETS.brandLogo}
+            alt="RecoverAI"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover"
+          />
+        </button>
+
         <div>
           <div className="flex items-center space-x-2">
             <h1 className="text-sm font-bold text-slate-900">

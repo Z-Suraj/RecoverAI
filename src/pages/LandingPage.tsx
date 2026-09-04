@@ -23,6 +23,7 @@ import { formatINR } from '../utils/formatters';
 import { CONTEXT_IMAGES } from '../utils/avatarUtils';
 import { AnimatedCounter } from '../components/common/AnimatedCounter';
 import { SafeImage } from '../components/common/SafeImage';
+import { VISUAL_ASSETS } from '../assets/images';
 
 interface LandingPageProps {
   navigate: (path: string) => void;
@@ -59,15 +60,21 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, onDemoLogin 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-3 cursor-pointer"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-600/30">
-              <RotateCcw className="w-5 h-5 text-white" />
+            <div className="w-11 h-11 rounded-xl overflow-hidden shadow-lg shadow-indigo-600/30 border border-slate-700/80 bg-slate-950 flex items-center justify-center shrink-0 hover:scale-105 transition-transform">
+              <img
+                src={VISUAL_ASSETS.brandLogo}
+                alt="RecoverAI Logo"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover object-center"
+              />
             </div>
             <div>
               <span className="font-extrabold text-xl tracking-tight text-white block">RecoverAI</span>
               <span className="text-[10px] text-indigo-400 font-semibold tracking-wider uppercase">
-                Autonomous Revenue Operations
+                Recover • Analyze • Grow
               </span>
             </div>
           </motion.div>
@@ -516,10 +523,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({ navigate, onDemoLogin 
       {/* Footer */}
       <footer className="py-10 bg-slate-950 border-t border-slate-800 text-xs text-slate-400">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-2">
-            <RotateCcw className="w-4 h-4 text-indigo-500" />
-            <span className="font-bold text-slate-300">RecoverAI Platform</span>
-            <span>— Autonomous Revenue Operations</span>
+          <div className="flex items-center space-x-3">
+            <div className="w-7 h-7 rounded-lg overflow-hidden border border-slate-700 bg-slate-900 shrink-0">
+              <img
+                src={VISUAL_ASSETS.brandLogo}
+                alt="RecoverAI"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <span className="font-bold text-slate-200">RecoverAI</span>
+              <span className="text-slate-400 ml-1.5">— Recover • Analyze • Grow</span>
+            </div>
           </div>
           <div className="flex items-center space-x-4">
             <span className="text-[11px] bg-slate-900 px-2.5 py-1 rounded text-slate-400 border border-slate-800">

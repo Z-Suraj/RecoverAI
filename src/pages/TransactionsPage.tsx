@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { apiClient } from '../api/client';
 import { Transaction } from '../types';
 import { formatINR, formatDateTime } from '../utils/formatters';
-import { getCustomerAvatar, GATEWAY_LOGOS, CONTEXT_IMAGES, getProductForTransaction } from '../utils/avatarUtils';
+import { getCustomerAvatar, GATEWAY_LOGOS, getProductForTransaction } from '../utils/avatarUtils';
+import { VISUAL_ASSETS } from '../assets/images';
 import { TransactionStatusBadge, FailureReasonLabel } from '../components/common/StatusBadge';
 import {
   ArrowLeftRight,
@@ -16,7 +17,13 @@ import {
   TrendingUp,
   Clock,
   ShieldCheck,
-  CreditCard
+  CreditCard,
+  Building,
+  CheckCircle2,
+  AlertTriangle,
+  Zap,
+  Activity,
+  Layers
 } from 'lucide-react';
 import { SafeImage } from '../components/common/SafeImage';
 import { usePlatform } from '../context/PlatformContext';
@@ -90,36 +97,40 @@ export const TransactionsPage: React.FC<TransactionsPageProps> = ({ navigate }) 
 
   return (
     <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header Bento Banner */}
-      <div className="bento-card p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center space-x-3.5">
-            <div className="w-12 h-12 rounded-xl overflow-hidden border border-slate-200 shadow-xs shrink-0 hidden sm:block">
-              <SafeImage
-                src={CONTEXT_IMAGES.ingestedTransactions}
-                alt="Payment Terminal Processing"
-                fallbackType="context"
-                className="w-full h-full object-cover"
-              />
+      {/* Header Bento Banner with Real-time Financial Transaction Intelligence Background */}
+      <div className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 border-slate-800 shadow-lg">
+        {/* Photorealistic Digital Payment Processing Background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <SafeImage
+            src={VISUAL_ASSETS.transactions}
+            alt="Digital Payment Processing & POS Gateway"
+            fallbackType="hero"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+        </div>
+
+        <div className="relative z-10 flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center border border-blue-500/30 shadow-inner shrink-0">
+            <CreditCard className="w-6 h-6 text-blue-300" />
+          </div>
+          <div>
+            <div className="flex items-center space-x-2">
+              <h2 className="text-lg font-extrabold text-white tracking-tight">Real-Time Financial Transaction Intelligence</h2>
+              <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                {filteredTransactions.length} of {transactions.length} Records
+              </span>
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Ingested Transactions Stream</h2>
-                <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
-                  {filteredTransactions.length} of {transactions.length} Records
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Real-time ledger of all processed, failed, and AI-recovered transactions across connected payment gateways.
-              </p>
-            </div>
+            <p className="text-xs text-slate-300 mt-1 max-w-2xl">
+              High-throughput ingestion ledger of all settled, failed, and AI-recovered payment flows across multi-gateway routing topologies.
+            </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-2.5">
+        <div className="relative z-10 flex items-center space-x-2.5">
           <button
             onClick={fetchTxns}
-            className="p-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 text-xs font-semibold flex items-center space-x-1.5 transition-colors cursor-pointer"
+            className="p-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-semibold flex items-center space-x-1.5 transition-colors cursor-pointer backdrop-blur-xs"
             title="Refresh stream"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
@@ -127,7 +138,7 @@ export const TransactionsPage: React.FC<TransactionsPageProps> = ({ navigate }) 
           </button>
           <button
             onClick={handleExportCSV}
-            className="px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center space-x-1.5 shadow-xs transition-colors cursor-pointer"
+            className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition-colors cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export CSV</span>

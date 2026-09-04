@@ -10,6 +10,7 @@ import {
   Sliders,
   Check
 } from 'lucide-react';
+import { VISUAL_ASSETS } from '../assets/images';
 
 interface OnboardingWizardProps {
   navigate: (path: string) => void;
@@ -65,8 +66,13 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ navigate }) 
       <div className="max-w-2xl mx-auto w-full">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-600/30 mx-auto mb-3">
-            <RotateCcw className="w-5 h-5 text-white" />
+          <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-2xl shadow-indigo-600/40 border border-slate-700/80 bg-slate-950 flex items-center justify-center mx-auto mb-3">
+            <img
+              src={VISUAL_ASSETS.brandLogo}
+              alt="RecoverAI Logo"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover"
+            />
           </div>
           <h2 className="text-2xl font-extrabold text-white">Setup Your Recovery Engine</h2>
           <p className="text-xs text-slate-400 mt-1">

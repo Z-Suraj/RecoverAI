@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { usePlatform } from '../context/PlatformContext';
 import { apiClient } from '../api/client';
+import { VISUAL_ASSETS } from '../assets/images';
+import { SafeImage } from '../components/common/SafeImage';
 import {
   Settings,
   ShieldCheck,
@@ -18,7 +20,10 @@ import {
   CreditCard,
   Send,
   Lock,
-  Sparkles
+  Sparkles,
+  SlidersHorizontal,
+  Layers,
+  Building
 } from 'lucide-react';
 
 export const SettingsPage: React.FC = () => {
@@ -106,31 +111,40 @@ export const SettingsPage: React.FC = () => {
 
   return (
     <div className="p-4 sm:p-6 max-w-5xl mx-auto space-y-6">
-      {/* Header Bento Banner */}
-      <div className="bento-card p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center space-x-2.5">
-            <div className="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center">
-              <Settings className="w-5 h-5" />
+      {/* Header Bento Banner with Photorealistic Policy Governance Background */}
+      <div className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-slate-800 shadow-lg">
+        {/* Photorealistic Policy & Governance Visual */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <SafeImage
+            src={VISUAL_ASSETS.settingsInfrastructure}
+            alt="Policy & Security Governance"
+            fallbackType="hero"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+        </div>
+
+        <div className="relative z-10 flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center border border-indigo-500/30 shadow-inner shrink-0">
+            <SlidersHorizontal className="w-6 h-6 text-indigo-300" />
+          </div>
+          <div>
+            <div className="flex items-center space-x-2">
+              <h2 className="text-lg font-extrabold text-white tracking-tight">Workspace & Policy Guardrails</h2>
+              <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                Autonomous Governance
+              </span>
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Workspace & Policy Guardrails</h2>
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
-                  Autonomous Governance
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Configure automated retry boundaries, human approval thresholds, and multi-channel dunning channels.
-              </p>
-            </div>
+            <p className="text-xs text-slate-300 mt-1 max-w-xl">
+              Configure automated retry boundaries, human approval thresholds, and multi-channel customer recovery channels.
+            </p>
           </div>
         </div>
 
         <button
           onClick={() => handleSave()}
           disabled={saving}
-          className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center space-x-1.5 shadow-xs transition-colors disabled:opacity-50 cursor-pointer self-start sm:self-auto"
+          className="relative z-10 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition-colors disabled:opacity-50 cursor-pointer self-start sm:self-auto"
         >
           <Save className="w-3.5 h-3.5" />
           <span>{saving ? 'Saving Changes...' : 'Save Guardrails'}</span>

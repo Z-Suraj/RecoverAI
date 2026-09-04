@@ -3,6 +3,7 @@ import { apiClient } from '../api/client';
 import { usePlatform } from '../context/PlatformContext';
 import { SimulationResult, SimulationScenario } from '../types';
 import { formatINR, formatPercent } from '../utils/formatters';
+import { VISUAL_ASSETS } from '../assets/images';
 import {
   Cpu,
   Play,
@@ -17,13 +18,16 @@ import {
   ShieldCheck,
   Zap,
   Sliders,
-  Check
+  Check,
+  Activity,
+  CreditCard,
+  Building,
+  Radio
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { AnimatedCounter } from '../components/common/AnimatedCounter';
 import { SafeImage } from '../components/common/SafeImage';
-import { CONTEXT_IMAGES } from '../utils/avatarUtils';
 
 interface SimulationPageProps {
   navigate: (path: string) => void;
@@ -116,30 +120,41 @@ export const SimulationPage: React.FC<SimulationPageProps> = ({ navigate }) => {
 
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header Bento Card */}
-      <div id="simulation-header-card" className="bento-card p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-600/20 shrink-0">
-            <Cpu className="w-5 h-5" />
+      {/* Header Bento Banner with Photorealistic Simulation Lab Background */}
+      <div id="simulation-header-card" className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-slate-800 shadow-lg">
+        {/* Photorealistic Financial Testing Lab Background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <SafeImage
+            src={VISUAL_ASSETS.simulationLab}
+            alt="Financial Network Simulation Cluster"
+            fallbackType="hero"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+        </div>
+
+        <div className="relative z-10 flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center border border-emerald-500/30 shadow-inner shrink-0">
+            <Cpu className="w-6 h-6 text-emerald-300" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Recovery Simulation Engine</h2>
-              <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <h2 className="text-lg font-extrabold text-white tracking-tight">Recovery Simulation & Stress-Test Engine</h2>
+              <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                 Safe Sandboxed Mode
               </span>
             </div>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Model high-volume transaction scenarios, stress-test recovery heuristics, and project bottom-line financial yield.
+            <p className="text-xs text-slate-300 mt-1 max-w-2xl">
+              Model high-concurrency transaction traffic, inject simulated gateway outages, and stress-test autonomous recovery heuristics before production routing.
             </p>
           </div>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="relative z-10 flex items-center space-x-2">
           <button
             onClick={() => navigate('/experiments')}
-            className="text-xs font-semibold text-slate-600 hover:text-indigo-600 px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 transition-all flex items-center space-x-1 cursor-pointer"
+            className="text-xs font-semibold text-slate-200 hover:text-white px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-700 transition-all flex items-center space-x-1.5 cursor-pointer backdrop-blur-xs hover:border-slate-600"
           >
-            <Sliders className="w-3.5 h-3.5" />
+            <Sliders className="w-3.5 h-3.5 text-indigo-400" />
             <span>A/B Experiments</span>
           </button>
         </div>
@@ -217,31 +232,31 @@ export const SimulationPage: React.FC<SimulationPageProps> = ({ navigate }) => {
                   id: 'NORMAL_DAY',
                   title: 'Normal Day',
                   desc: '14% baseline leakage across all payment channels',
-                  image: CONTEXT_IMAGES.merchantDashboard,
+                  image: VISUAL_ASSETS.simulationLab,
                 },
                 {
                   id: 'PAYMENT_FAILURE_SPIKE',
                   title: 'UPI Failure Spike',
                   desc: 'Heavy bank server latency & 3DS timeouts',
-                  image: CONTEXT_IMAGES.paymentTerminal,
+                  image: VISUAL_ASSETS.paymentTerminal,
                 },
                 {
                   id: 'SUBSCRIPTION_RENEWAL_FAILURE',
                   title: 'Renewal Failure',
                   desc: 'Recurring auto-debit cards expiring',
-                  image: CONTEXT_IMAGES.enterpriseServer,
+                  image: VISUAL_ASSETS.developerTerminal,
                 },
                 {
                   id: 'CHECKOUT_ABANDONMENT_SPIKE',
                   title: 'Checkout Spike',
                   desc: 'Flash sale surge & abandoned cart dropoffs',
-                  image: CONTEXT_IMAGES.onlineShopping,
+                  image: VISUAL_ASSETS.customerIntelligence,
                 },
                 {
                   id: 'MIXED_REVENUE_LEAKAGE',
                   title: 'Mixed Multi-Channel Leakage',
                   desc: 'Multi-gateway network degradation',
-                  image: CONTEXT_IMAGES.mobileCheckout,
+                  image: VISUAL_ASSETS.transactions,
                 },
               ].map((s) => (
                 <div

@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { apiClient } from '../api/client';
 import { Customer } from '../types';
 import { formatINR } from '../utils/formatters';
-import { getCustomerAvatar, CONTEXT_IMAGES } from '../utils/avatarUtils';
+import { getCustomerAvatar } from '../utils/avatarUtils';
+import { VISUAL_ASSETS } from '../assets/images';
 import {
   Users,
   Search,
@@ -16,7 +17,14 @@ import {
   Award,
   Phone,
   Mail,
-  ArrowUpDown
+  ArrowUpDown,
+  CreditCard,
+  Building,
+  CheckCircle2,
+  AlertTriangle,
+  Zap,
+  Activity,
+  Layers
 } from 'lucide-react';
 import { SafeImage } from '../components/common/SafeImage';
 import { usePlatform } from '../context/PlatformContext';
@@ -94,36 +102,40 @@ export const CustomersPage: React.FC<CustomersPageProps> = ({ navigate }) => {
 
   return (
     <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
-      {/* Header Bento Banner */}
-      <div className="bento-card p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center space-x-3.5">
-            <div className="w-12 h-12 rounded-xl overflow-hidden border border-slate-200 shadow-xs shrink-0 hidden sm:block">
-              <SafeImage
-                src={CONTEXT_IMAGES.customerClv}
-                alt="Customer CLV Intelligence"
-                fallbackType="context"
-                className="w-full h-full object-cover"
-              />
+      {/* Header Bento Banner with Photorealistic Customer Analytics Background */}
+      <div className="bento-card relative overflow-hidden p-6 bg-slate-950 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 border-slate-800 shadow-lg">
+        {/* Photorealistic Customer Intelligence Screen Visual */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <SafeImage
+            src={VISUAL_ASSETS.customerIntelligence}
+            alt="Customer Cohort & Risk Intelligence"
+            fallbackType="hero"
+            className="w-full h-full object-cover object-right md:object-center opacity-65 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+        </div>
+
+        <div className="relative z-10 flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-violet-500/20 text-violet-300 flex items-center justify-center border border-violet-500/30 shadow-inner shrink-0">
+            <Users className="w-6 h-6 text-violet-300" />
+          </div>
+          <div>
+            <div className="flex items-center space-x-2">
+              <h2 className="text-lg font-extrabold text-white tracking-tight">Customer CLV & Payment Reliability</h2>
+              <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30">
+                {filteredAndSorted.length} Active Profiles
+              </span>
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-lg font-extrabold text-slate-900 tracking-tight">Customer CLV & Payment Reliability</h2>
-                <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
-                  {filteredAndSorted.length} Active Profiles
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 mt-0.5">
-                AI-enriched customer lifetime value, historical payment success ratios, risk tiers, and preferred communication channels.
-              </p>
-            </div>
+            <p className="text-xs text-slate-300 mt-1 max-w-2xl">
+              AI-enriched customer lifetime value, historical payment success ratios, risk tiers, and tailored recovery channel preferences.
+            </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-2.5">
+        <div className="relative z-10 flex items-center space-x-2.5">
           <button
             onClick={handleExportCSV}
-            className="px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center space-x-1.5 shadow-xs transition-colors cursor-pointer"
+            className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition-colors cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export Directory</span>

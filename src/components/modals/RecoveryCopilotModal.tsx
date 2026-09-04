@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { usePlatform } from '../../context/PlatformContext';
 import { apiClient } from '../../api/client';
 import { CONTEXT_IMAGES } from '../../utils/avatarUtils';
+import { VISUAL_ASSETS } from '../../assets/images';
 import { SafeImage } from '../common/SafeImage';
 import {
   Sparkles,
@@ -144,40 +145,51 @@ export const RecoveryCopilotModal: React.FC<RecoveryCopilotModalProps> = ({ navi
           transition={{ type: 'spring', damping: 25, stiffness: 220 }}
           className="bg-white w-full max-w-lg h-full shadow-2xl border-l border-slate-200 flex flex-col"
         >
-          {/* Header with Authentic Analyst Portrait */}
-          <div className="p-4 border-b border-slate-200 bg-slate-900 text-white flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-slate-700 bg-slate-800 shrink-0">
+          {/* Header with Authentic Analyst Portrait and Photorealistic Background */}
+          <div className="relative overflow-hidden p-4 border-b border-slate-800 bg-slate-950 text-white flex items-center justify-between">
+            {/* Photorealistic FinTech AI Copilot Background */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              <SafeImage
+                src={VISUAL_ASSETS.recoveryCopilot}
+                alt="AI FinOps Copilot"
+                fallbackType="hero"
+                className="w-full h-full object-cover object-right opacity-65 scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
+            </div>
+
+            <div className="relative z-10 flex items-center space-x-3">
+              <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-indigo-500/40 bg-slate-800 shrink-0 shadow-md">
                 <SafeImage
-                  src={CONTEXT_IMAGES.recoveryCopilot}
+                  src={VISUAL_ASSETS.recoveryCopilot}
                   alt="FinTech Analyst Copilot"
                   fallbackType="avatar"
                   fallbackText="AI Copilot"
                   className="w-full h-full object-cover"
                 />
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-slate-900" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-slate-950 shadow-xs" />
               </div>
               <div>
                 <div className="flex items-center space-x-1.5">
                   <h3 className="text-xs font-bold text-white tracking-tight">RecoverAI FinOps Copilot</h3>
-                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-1.5 py-0.2 rounded border border-emerald-800">
-                    Live
+                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded-md border border-emerald-800/80">
+                    Live Engine
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400 font-medium">Payment Telemetry & Autonomous Recovery</p>
+                <p className="text-[11px] text-slate-300 font-medium">Payment Telemetry & Autonomous Recovery</p>
               </div>
             </div>
-            <div className="flex items-center space-x-1">
+            <div className="relative z-10 flex items-center space-x-1">
               <button
                 onClick={handleClearHistory}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
                 title="Reset session"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setIsCopilotOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
                 title="Close Copilot"
               >
                 <X className="w-4 h-4" />
